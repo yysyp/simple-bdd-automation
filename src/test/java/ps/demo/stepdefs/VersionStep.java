@@ -10,9 +10,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class VersionStep extends SpringIntegrationTest {
 
-    @When("^the client calls /version$")
-    public void the_client_issues_GET_version() throws Throwable{
-        executeGet("http://localhost:8080/version");
+    @When("^the client calls /version with (\\d+)$")
+    public void the_client_issues_GET_version(Integer num) throws Throwable{
+        executeGet("http://localhost:8080/version?num="+num);
     }
 
     @Then("^the client receives status code of (\\d+)$")
