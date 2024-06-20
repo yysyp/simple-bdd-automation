@@ -12,7 +12,7 @@ public class VersionStep extends SpringIntegrationTest {
 
     @When("^the client calls /version with (\\d+)$")
     public void the_client_issues_GET_version(Integer num) throws Throwable{
-        executeGet("http://localhost:8080/version?num="+num);
+        executeGet("http://localhost:8086/version?num="+num);
     }
 
     @Then("^the client receives status code of (\\d+)$")
