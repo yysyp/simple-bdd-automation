@@ -3,12 +3,18 @@ package ps.demo.stepdefs;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import ps.demo.context.SpringIntegrationTest;
+
+import javax.sql.DataSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class VersionStep extends SpringIntegrationTest {
+
+    @Autowired
+    private DataSource dataSource;
 
     @When("^the client calls /version with (\\d+)$")
     public void the_client_issues_GET_version(Integer num) throws Throwable{
