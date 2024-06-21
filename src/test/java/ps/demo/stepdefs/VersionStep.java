@@ -1,10 +1,11 @@
 package ps.demo.stepdefs;
 
+import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import ps.demo.common.ScenarioContext;
 import ps.demo.context.SpringIntegrationTest;
 
 import javax.sql.DataSource;
@@ -15,6 +16,15 @@ public class VersionStep extends SpringIntegrationTest {
 
     @Autowired
     private DataSource dataSource;
+
+    @Autowired
+    private ScenarioContext scenarioContext;
+
+    @After
+    public void cleanUp() {
+        System.out.println("This only run once one cucumber scenario is completed.");
+        scenarioContext.clear();
+    }
 
     @When("^the client calls /version with (\\d+)$")
     public void the_client_issues_GET_version(Integer num) throws Throwable{

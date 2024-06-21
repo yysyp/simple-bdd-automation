@@ -5,7 +5,7 @@ import cn.hutool.http.HttpResponse;
 import cn.hutool.http.HttpUtil;
 import io.cucumber.spring.CucumberContextConfiguration;
 import org.apache.commons.lang3.RandomUtils;
-import org.awaitility.Awaitility;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import ps.demo.dto.Student;
@@ -25,13 +25,7 @@ public class SpringIntegrationTest {
     public void executeGet(String url) {
         response = HttpUtil.createGet(url).execute();
         System.out.println("-->student="+student);
-        Awaitility.await()
-                .timeout(5, TimeUnit.MINUTES)
-                .pollDelay(1, TimeUnit.MINUTES)
-                .pollInterval(Duration.ofSeconds(5))
-                .until(() -> {
-                    return RandomUtils.nextBoolean();
-                });
+
 
     }
 

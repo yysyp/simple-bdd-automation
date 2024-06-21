@@ -17,17 +17,17 @@ public class DbAction {
     private DataSource dataSource;
 
     @SneakyThrows
-    public List<Entity> findBySql(String sql, Object ... parameters) {
+    public List<Entity> findBySql(String sql, Object... parameters) {
         return Db.use(dataSource).query(sql, parameters);
     }
 
     @SneakyThrows
-    public Entity findOneBySql(String sql, Object ... parameters) {
+    public Entity findOneBySql(String sql, Object... parameters) {
         return Db.use(dataSource).queryOne(sql, parameters);
     }
 
     @SneakyThrows
-    public int execute(String sql, Object...parameters) {
+    public int execute(String sql, Object... parameters) {
         return Db.use(dataSource).execute(sql, parameters);
     }
 
@@ -35,4 +35,10 @@ public class DbAction {
     public int insert(Entity entity) {
         return Db.use(dataSource).insert(entity);
     }
+
+    @SneakyThrows
+    public int[] insert(List<Entity> entities) {
+        return Db.use(dataSource).insert(entities);
+    }
+
 }
