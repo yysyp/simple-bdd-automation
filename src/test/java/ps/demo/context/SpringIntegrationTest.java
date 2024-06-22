@@ -22,11 +22,10 @@ public class SpringIntegrationTest {
     private Student student;
 
     protected HttpResponse response;
-    public void executeGet(String url) {
+    public HttpResponse executeGet(String url) {
         response = HttpUtil.createGet(url).execute();
-        System.out.println("-->student="+student);
-
-
+        //System.out.println("-->student="+student);
+        return response;
     }
 
 }

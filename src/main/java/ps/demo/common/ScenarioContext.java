@@ -17,7 +17,7 @@ public class ScenarioContext {
     private ResponseEntity<Object> responseEntity;
 
     private Map<String, Object> pars = new ConcurrentHashMap<>();
-    
+
     public void clear() {
         this.responseEntity = null;
         pars.clear();
